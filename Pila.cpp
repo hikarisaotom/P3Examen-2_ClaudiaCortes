@@ -6,7 +6,7 @@ Pila::Pila(Elemento *Simbolo)
     this->Actual = Simbolo;
     cout << "Creando la base de la pila." << endl;
     cout << Simbolo->getSimbolo() << endl;
-    this->nombre=Simbolo->getSimbolo();
+    this->nombre = Simbolo->getSimbolo();
 }
 void Pila::Apilar(Elemento *Simbolo) //Push
 {
@@ -52,8 +52,6 @@ double Pila::getvalor()
 {
     return this->valor;
 }
-
-
 
 string Pila::getnombre()
 {
