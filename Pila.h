@@ -13,6 +13,7 @@ class Pila
     Elemento *Actual;
     Elemento *Viejo;
     double valor;
+    string nombre;
     //metodos publicos
   public:
     //prototipos de metodos
@@ -23,6 +24,7 @@ class Pila
     bool estaVacia();        //IsEmpty
     double getvalor();
     void setvalor(double);
+    string getnombre();
     //Destructor
     ~Pila();
 
