@@ -9,6 +9,7 @@ using namespace std;
 vector<Pila *> Variables;
 void sumar(Pila *);
 Pila *buscarletra(string);
+bool boleanletra(string);
 int main()
 {
     int respuesta = 0;
@@ -59,6 +60,7 @@ void sumar(Pila *stack)
     double total;
     string simboloAnterior = "";
     int bandera;
+    double valor;
     while (!stack->estaVacia())
     {
 
@@ -88,8 +90,26 @@ void sumar(Pila *stack)
         }
         else if (simbolo == "=" || simbolo == stack->getnombre() || simbolo == "(" || simbolo == ")")
         {
+
             bandera = 16;
             continue;
+        }
+        else if (simbolo != "=" && simbolo != stack->getnombre() && simbolo != "(" && simbolo != ")" && simbolo != "0" && simbolo != "1" && simbolo != "2" && simbolo != "3" && simbolo != "4" && simbolo != "5" && simbolo != "6" && simbolo != "7" && simbolo != "8" && simbolo != "9")
+        {
+            if (boleanletra(simbolo))
+            {
+                cout << "Encontro la letra;" << endl;
+                valor += buscarletra(simbolo)->getvalor();
+                cout << "" << valor << " simbolo " << buscarletra(simbolo)->getnombre() << endl;
+                bandera = 16;
+                continue;
+            }
+            else
+            {
+
+                bandera = 16;
+                continue;
+            }
         }
 
         if (stoi(simbolo.c_str()) <= 9)
@@ -138,16 +158,30 @@ void sumar(Pila *stack)
 
         } //fin del case.
     }     //FIn del while.
-    stack->setvalor(total);
+    stack->setvalor(total + valor);
     cout << stack->getnombre() << " = " << stack->getvalor() << endl;
+    Variables.push_back(stack);
 }
 
 Pila *buscarletra(string simbolo)
 {
-    for (int i=0;i<Variables.size();i++)
+    for (int i = 0; i < Variables.size(); i++)
     {
-        if(simbolo==Variables[i]->getnombre()){
+        if (simbolo == Variables[i]->getnombre())
+        {
             return Variables[i];
         }
     }
+}
+
+bool boleanletra(string simbolo)
+{
+    for (int i = 0; i < Variables.size(); i++)
+    {
+        if (simbolo == Variables[i]->getnombre())
+        {
+            return true;
+        }
+    }
+    return false;
 }
