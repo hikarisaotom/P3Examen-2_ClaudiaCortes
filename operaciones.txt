@@ -3,3 +3,6 @@ B=1+2+3+A
 C=A+B
 .
 /*FAVOR NO QUITAR EL PUNTO*/
+A=18
+B=24
+C=42

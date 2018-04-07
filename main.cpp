@@ -23,12 +23,17 @@ int main()
     {
         Pila *stack = generarstack(DelArchivo[i]);
         sumar(stack);
-        Variables.push_back(stack);
+        //Variables.push_back(stack);
     }
     while (respuesta != 1)
     {
+        string Vars = "";
+        for (int i = 0; i < Variables.size(); i++)
+        {
+            Vars += Variables[i]->getnombre() + ", ";
+        }
         cout << "********************BIENVENIDO AL EXAMEN DE PROGRAMACION III***************************" << endl
-             << " -> Tienes disponibles las variables A,B,C" << endl
+             << " -> Tienes disponibles las variables " << Vars << endl
              << " -> Claudia Patricia Cortes Pavon" << endl
              << " -> Lei del archivo, dame mi puntito :c" << endl;
         string operacion = "";
@@ -123,9 +128,8 @@ void sumar(Pila *stack)
         {
             if (boleanletra(simbolo))
             {
-                cout << "Encontro la letra;" << endl;
                 valor += buscarletra(simbolo)->getvalor();
-                cout << "" << valor << " simbolo " << buscarletra(simbolo)->getnombre() << endl;
+                cout << "-----> Encontro la letra Variable " << buscarletra(simbolo)->getnombre() << " " << buscarletra(simbolo)->getvalor() << endl;
                 bandera = 16;
                 continue;
             }
